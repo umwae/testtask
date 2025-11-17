@@ -1,0 +1,8 @@
+analyzer:
+  errors:
+    eol_at_end_of_file: ignore
+    directives_ordering: ignore
+  exclude: 
+    - "lib/src/core/localization/generated/**"
+formatter:
+  trailing_commas: preserve
