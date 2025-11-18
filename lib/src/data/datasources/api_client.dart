@@ -17,11 +17,9 @@ class ApiClient {
         final data = jsonDecode(response.body) as Map<String, dynamic>;
         return CharactersPageDTO.fromJson(data);
       } else {
-        print('1 ${response.statusCode} ${response.body}');
         throw NetworkException('Ответ сервера ${response.statusCode}');
       }
     } on Exception catch (e) {
-      print('2 ${e.toString()}');
       throw e.toAppException();
     }
   }
@@ -33,11 +31,9 @@ class ApiClient {
       if (response.statusCode == 200) {
         return response.bodyBytes;
       } else {
-        print('3 ${response.statusCode} ${response.body}');
         throw NetworkException('Ответ сервера ${response.statusCode}');
       }
     } on Exception catch (e) {
-      print('4 ${e.toString()}');
       throw e.toAppException();
     }
   }
