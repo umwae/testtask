@@ -57,7 +57,12 @@ extension DTOCharPageMapper on CharactersPageDTO {
   ) async {
     final characters = await Future.wait(
       results.map((e) async {
-        final imageData = await imageDataLoader.call(e.image);
+        Uint8List? imageData;
+        try {
+          imageData = await imageDataLoader.call(e.image);
+        } catch (_) {
+          imageData = null;
+        }
         return e.toEntity(imageData: imageData);
       }).toList(),
     );

@@ -27,7 +27,7 @@ class ApiClient {
   Future<Uint8List?> getImageData(String url) async {
     try {
       final uri = Uri.parse(url);
-      final response = await http.get(uri);
+      final response = await http.get(uri).timeout(const Duration(seconds: 5));
       if (response.statusCode == 200) {
         return response.bodyBytes;
       } else {
